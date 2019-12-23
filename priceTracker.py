@@ -3,10 +3,8 @@ from bs4 import BeautifulSoup
 import webbrowser
 from datetime import date, datetime
 import os
-import time
-import schedule
 
-def job():
+def main():
 	today = date.today()
 	# dd/mm/YY
 	d1 = today.strftime("%Y%m%d")
@@ -27,22 +25,15 @@ def job():
 
 	for i in range(len(numbers)):
 		# print(items.getText().strip())
-		f.write(title[i].prettify(formatter="html").replace("class=\"voucher-title\"", "class=\"voucher-title\" style=\"font-size:40pt; color: red\""))
+		f.write(title[i].prettify("UTF-8", formatter="html").replace("class=\"voucher-title\"", "class=\"voucher-title\" style=\"font-size:40pt; color: red\""))
 		# f.write("<br>")
-		f.write(day [i].prettify(formatter="html").replace("class=\"voucher-end-date no-timer\"", "class=\"voucher-end-date no-timer\" style=\"font-size:9pt\""))
-		f.write(msg[i].prettify(formatter="html").replace("strong", "p style=\"font-size:12pt\""))
+		f.write(day [i].prettify("UTF-8", formatter="html").replace("class=\"voucher-end-date no-timer\"", "class=\"voucher-end-date no-timer\" style=\"font-size:9pt\""))
+		f.write(msg[i].prettify("UTF-8", formatter="html").replace("strong", "p style=\"font-size:12pt\""))
 		f.write("<br><br><br><br>")
 
-	webbrowser.open(filename, new = 2)
+	cwd = os.getcwd()
+	webbrowser.open("file://" + cwd + "/" + filename, new = 2)
 	return
-
-def main():
-	schedule.every().day.at("10:00").do(job)
-
-	while True:
-	    schedule.run_pending()
-	    print(datetime.now())
-	    time.sleep(60) # wait one minute
 
 if __name__ == "__main__":
 	main()
