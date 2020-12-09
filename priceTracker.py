@@ -34,10 +34,13 @@ def crawl():
 	soup = BeautifulSoup(page.content, 'html.parser')
 	soup.encoding = 'utf-8'
 	title = soup.findAll("h2", {"class": "voucher-title"})
-	day   = soup.findAll("div", {"class": "voucher-end-date"})
+	day   = soup.findAll("p", {"class": "voucher-end-date"})
 	msg   = soup.findAll("div", {"class": "voucher-message"})
 	numbers = [d.string for d in title]
 
+	print(str('crawled objects\' sizes: ') + str((len(title), len(day), len(msg))))
+	if len(title) != len(day) or len(title) != len(msg) or len(day) != len(msg):
+		return 1
 	discounts = []
 	for t in title:
 		tmp = t.text.split(u' ')
@@ -64,11 +67,15 @@ def crawl():
 
 	cwd = os.getcwd()
 	# webbrowser.open("file://" + cwd + "/" + filename, new = 2)
-	return
+	return 0
 
 def main():
-	crawl()
-	render()
+	if crawl() != 0:
+		print('Something went wrong.')
+		return
+	else:
+		print('Start render()...')
+		render()
 
 if __name__ == "__main__":
 	main()
