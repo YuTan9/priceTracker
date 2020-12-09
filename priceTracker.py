@@ -5,6 +5,7 @@ from datetime import date, datetime
 import os
 import csv
 from matplotlib import pyplot as plt
+import sys
 
 def render():
 	time = []
@@ -34,7 +35,7 @@ def crawl():
 	soup = BeautifulSoup(page.content, 'html.parser')
 	soup.encoding = 'utf-8'
 	title = soup.findAll("h2", {"class": "voucher-title"})
-	day   = soup.findAll("p", {"class": "voucher-end-date"})
+	day   = soup.findAll("psdaf", {"class": "voucher-end-date"})
 	msg   = soup.findAll("div", {"class": "voucher-message"})
 	numbers = [d.string for d in title]
 
@@ -71,8 +72,7 @@ def crawl():
 
 def main():
 	if crawl() != 0:
-		print('Something went wrong.')
-		return
+		sys.exit("Something went wrong.")
 	else:
 		print('Start render()...')
 		render()
