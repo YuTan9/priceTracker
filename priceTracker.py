@@ -35,7 +35,7 @@ def crawl():
 	soup = BeautifulSoup(page.content, 'html.parser')
 	soup.encoding = 'utf-8'
 	title = soup.findAll("h2", {"class": "voucher-title"})
-	day   = soup.findAll("psdaf", {"class": "voucher-end-date"})
+	day   = soup.findAll("div", {"class": "voucher-end-date"})
 	msg   = soup.findAll("div", {"class": "voucher-message"})
 	numbers = [d.string for d in title]
 
