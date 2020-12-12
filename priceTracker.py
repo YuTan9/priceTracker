@@ -17,11 +17,12 @@ def render():
 			time.append(row[0])
 			discounts.append(int(row[1]))
 	plt.xlabel("Date")
-	plt.ylabel("__%% off")
-        plt.yticks([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
+	plt.ylabel("Percent off")
 	plt.plot(time, discounts, 'r.-')
+	plt.yticks([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
 	plt.title('discounts')
 	plt.savefig('discount.png')
+	# plt.show()
 		
 
 def crawl():
