@@ -47,8 +47,9 @@ def crawl():
 	discounts = []
 	for t in title:
 		tmp = t.text.split(u' ')
+                # print(tmp)
 		for i in range(len(tmp)):
-			if tmp[i] == u'\u6298':
+			if tmp[i][0] == u'\u6298':
 				if int(tmp[i-1]) < 10:
 					discounts.append(100-int(tmp[i-1])*10)
 				else:
@@ -76,8 +77,8 @@ def main():
 	if crawl() != 0:
 		sys.exit("Something went wrong.")
 	else:
-		print('Start render()...')
-		render()
+		print('Job completed successfully')
+		#render()
 
 if __name__ == "__main__":
 	main()

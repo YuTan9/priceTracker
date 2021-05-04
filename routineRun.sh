@@ -1,5 +1,6 @@
 #!/bin/bash
 cd /home/pi/priceTracker
+git pull
 if python priceTracker.py; then
 	git add log.csv discount.png
 	git commit -m "Price tracker auto update."
