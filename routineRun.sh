@@ -2,9 +2,9 @@
 cd /home/pi/priceTracker
 git pull
 if python priceTracker.py; then
-	git checkout -b routineRun
-	git add log.csv discount.png
+	git add log.csv
 	git commit -m "Price tracker auto update."
+	git checkout routineRun
 	git push origin routineRun
 	git checkout master
 	git merge routineRun
