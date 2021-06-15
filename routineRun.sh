@@ -5,7 +5,6 @@ git checkout routineRun
 if python priceTracker.py; then
 	git add log.csv
 	git commit -m "Price tracker auto update."
-	git checkout routineRun
 	git push origin routineRun
 	git checkout master
 	git merge routineRun
