@@ -31,6 +31,9 @@
             background-color: #fa940f;
             
         }
+        .button_container{
+            text-align: center;
+        }
     </style>
     <title>Price Tracker</title>
 </head>
@@ -43,6 +46,15 @@
     <script src="js/main.js"></script>
     <div>
         <progress id="animationProgress" max="1" value="0"></progress>
+        <div class = 'button_container'>
+            <span>Choose time span</span>
+            <br>
+            <button type="button" id = '1m' onclick = "renderInRange(30)">1 Month</button>
+            <button type="button" id = '3m' onclick = "renderInRange(90)">3 Months</button>
+            <button type="button" id = '6m' onclick = "renderInRange(180)">6 Months</button>
+            <button type="button" id = '12m' onclick = "renderInRange(360)">12 Months</button>
+            <button type="button" id = 'all' onclick = "renderInRange(-1)">All</button>
+        </div>
         <canvas id="myChart"></canvas>
         <h4 id = "pd"></h4>
         <p  id = 'p1'></p>
