@@ -9,9 +9,11 @@
         }
         h3{
             text-align: center;
+            color: #2a3f8a;
         }
         h4{
             margin-left: 10%;
+            color: #2a3f8a;
         }
         p{
             text-align: justify;
@@ -20,19 +22,24 @@
             margin-right: 10%;
         }
         a{
-            color: #fa940f; 
+            color: #fed136; 
             cursor: pointer;
+            font-weight: bold;
         }
         progress{
             width: 100%;
         }
-        #p5{
-            font-weight: bolder;
-            background-color: #fa940f;
-            
-        }
         .button_container{
+            color: #2a3f8a;
+            font-weight: bold;
             text-align: center;
+        }
+        #dropdown_box{
+            border-radius: 10px;
+            color: #2a3f8a;
+            font-weight: bold;
+            border-color: #fed136;
+            border-width: 2px;
         }
     </style>
     <title>Price Tracker</title>
@@ -47,24 +54,24 @@
     <div>
         <progress id="animationProgress" max="1" value="0"></progress>
         <div class = 'button_container'>
-            <span>Choose time span</span>
-            <br>
-            <button type="button" id = '1m' onclick = "renderInRange(30)">1 Month</button>
-            <button type="button" id = '3m' onclick = "renderInRange(90)">3 Months</button>
-            <button type="button" id = '6m' onclick = "renderInRange(180)">6 Months</button>
-            <button type="button" id = '12m' onclick = "renderInRange(360)">12 Months</button>
-            <button type="button" id = 'all' onclick = "renderInRange(-1)">All</button>
+            <label>Choose time span</label>
+            <select id = "dropdown_box" name="timespan" onchange="renderInRange(this.value);">
+                <option class = "dropdown_item" value="-1">All</option>
+                <option class = "dropdown_item" value="360">12 Months</option>
+                <option class = "dropdown_item" value="180">6 Months</option>
+                <option class = "dropdown_item" value="90">3 Months</option>
+                <option class = "dropdown_item" value="30">1 Month</option>
+            </select>
         </div>
         <canvas id="myChart"></canvas>
-        <h4 id = "pd"></h4>
+        <h3 id = "pd"></h4>
         <p  id = 'p1'></p>
-        <p>
-            <span id = 'p5'></span>
-        </p>
-        <h4 id = 'dd'></h4>
+        <br>
+        <h3 id = 'dd'></h4>
         <p  id = 'p2'></p>
         <p  id = 'p3'></p>
-        <h4 id = 'dc'></h4>
+        <br>
+        <h3 id = 'dc'></h4>
         <p  id = 'p4'></p>
     </div>
     
