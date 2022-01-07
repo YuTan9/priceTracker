@@ -10,6 +10,6 @@ if python priceTracker.py; then
 	git merge --no-edit routineRun
 	git push
 else
-	echo "MyProtein price tracker running on raspberry pi crashed." | mail -s "Price Tracker Bug" s110095@shsh.tw
+	echo "MyProtein price tracker running on raspberry pi crashed." | mail -s "Price Tracker Bug" yutangutil@gmail.com
 fi
 git checkout master
