@@ -50,10 +50,13 @@ def crawl():
                 # print(tmp)
 		for i in range(len(tmp)):
 			if tmp[i][0] == u'\u6298':
-				if int(tmp[i-1]) < 10:
-					discounts.append(100-int(tmp[i-1])*10)
-				else:
-					discounts.append(100-int(tmp[i-1]))
+				try: #'折' sometimes is not describing what percent off
+					if int(tmp[i-1]) < 10:
+						discounts.append(100-int(tmp[i-1])*10)
+					else:
+						discounts.append(100-int(tmp[i-1]))
+				except:
+					continue
 
 	fields=[today, max(discounts)]
 	with open('log.csv', 'a') as f:
