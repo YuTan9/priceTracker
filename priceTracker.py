@@ -41,7 +41,7 @@ def crawl():
 	msg   = soup.findAll("div", {"class": "voucher-message"})
 	numbers = [d.string for d in title]
 
-	print(str('crawled objects\' sizes: ') + str((len(title), len(day), len(msg))))
+	# print(str('crawled objects\' sizes: ') + str((len(title), len(day), len(msg))))
 	if len(title) != len(day) or len(title) != len(msg) or len(day) != len(msg):
 		return 1
 	discounts = []
@@ -62,9 +62,10 @@ def crawl():
 	with open('log.csv', 'a') as f:
 		writer = csv.writer(f)
 		writer.writerow(fields)
+	# saveEventsToHtml(title, day, msg, numbers, d1)
 	return 0
 
-def saveEventsToHtml(title, day, msg, d1):
+def saveEventsToHtml(title, day, msg, numbers, d1):
 	os.chdir("events")
 	filename = "event" + d1 + ".html"
 	with open(filename,"w+") as f:
