@@ -23,7 +23,7 @@ def render():
 	plt.title('discounts')
 	plt.savefig('discount.png')
 	# plt.show()
-		
+
 
 def crawl():
 	today = date.today()
@@ -62,19 +62,21 @@ def crawl():
 	with open('log.csv', 'a') as f:
 		writer = csv.writer(f)
 		writer.writerow(fields)
+	return 0
 
+def saveEventsToHtml(title, day, msg, d1):
 	os.chdir("events")
 	filename = "event" + d1 + ".html"
 	with open(filename,"w+") as f:
 		for i in range(len(numbers)):
 			f.write(title[i].prettify("UTF-8", formatter="html").replace("class=\"voucher-title\"", "class=\"voucher-title\" style=\"font-size:40pt; color: red\""))
-			f.write(day [i].prettify("UTF-8", formatter="html").replace("class=\"voucher-end-date no-timer\"", "class=\"voucher-end-date no-timer\" style=\"font-size:9pt\""))
+			f.write(day[i].prettify("UTF-8", formatter="html").replace("class=\"voucher-end-date no-timer\"", "class=\"voucher-end-date no-timer\" style=\"font-size:9pt\""))
 			f.write(msg[i].prettify("UTF-8", formatter="html").replace("strong", "p style=\"font-size:12pt\""))
 			f.write("<br><br><br><br>")
 
 	cwd = os.getcwd()
 	# webbrowser.open("file://" + cwd + "/" + filename, new = 2)
-	return 0
+
 
 def main():
 	if crawl() != 0:
