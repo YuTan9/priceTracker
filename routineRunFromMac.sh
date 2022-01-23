@@ -2,7 +2,7 @@
 cd ~/Desktop/priceTracker
 git pull
 git checkout routineRun
-if python priceTracker.py 2>error.log; then
+if /Users/yutang/opt/anaconda3/bin/python priceTracker.py 2>error.log; then
 	git add log.csv
 	git commit -m "Price tracker auto update."
 	git push origin routineRun
