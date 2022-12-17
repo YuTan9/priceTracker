@@ -12,5 +12,5 @@ if python priceTracker.py 2>error.log; then
 else
 	ERRORMSG=$(cat error.log)
 	echo "MyProtein price tracker running on raspberry pi crashed.\nError Message:\n $ERRORMSG" | mail -s "Price Tracker Bug" yutangutil@gmail.com
+	git checkout master
 fi
-git checkout master
